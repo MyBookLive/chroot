@@ -15,9 +15,8 @@ fi
 iSystem=wheezy
 chrootBaseDir=/DataVolume/$chrootDir
 debootstrapPkgName=debootstrap_1.0.48+deb7u1_all.deb
-projectURL=http://mbl-common.googlecode.com/svn/chroot-install
+projectURL=https://github.com/MyBookLive/chroot/raw/master
 isServicesInstalled=no
-wget -q -O - http://mbl-common.googlecode.com/files/downloadcounter.txt > /dev/null 2>&1
 echo -e $INFO This script will guide you through the chroot-based services
 echo -e $INFO installation on Western Digital My Book Live \(Duo\) and My Cloud NAS.
 echo -e $INFO The goal is to install Debian $iSystem environment with no interference
@@ -128,4 +127,4 @@ echo -e $INFO $chrootBaseDir/chroot-services.list
 echo -e $INFO /etc/init.d/chroot_$chrootDir.sh script is used
 echo -e $INFO to start or stop chroot\'ed services.
 echo -e $INFO Found bug? Please, report us!
-echo -e $INFO http://code.google.com/p/mbl-common/issues/list
+echo -e $INFO https://github.com/MyBookLive/chroot/issues
