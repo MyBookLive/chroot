@@ -17,6 +17,7 @@ chrootBaseDir=/DataVolume/$chrootDir
 debootstrapPkgName=debootstrap_1.0.48+deb7u1_all.deb
 projectURL=https://github.com/MyBookLive/chroot/raw/master
 isServicesInstalled=no
+WGET="wget --no-check-certificate -q -O"
 echo -e $INFO This script will guide you through the chroot-based services
 echo -e $INFO installation on Western Digital My Book Live \(Duo\) and My Cloud NAS.
 echo -e $INFO The goal is to install Debian $iSystem environment with no interference
@@ -46,7 +47,7 @@ else
 	mkdir $chrootBaseDir
 fi
 echo -e $INFO Deploying a debootstrap package...
-wget -q -O /tmp/$debootstrapPkgName $projectURL/$debootstrapPkgName
+$WGET /tmp/$debootstrapPkgName $projectURL/$debootstrapPkgName
 dpkg -i /tmp/$debootstrapPkgName > /dev/null 2>&1
 rm -f /tmp/$debootstrapPkgName
 echo -e $INFO Preparing a new Debian $iSystem chroot file base. Please, be patient,
@@ -64,7 +65,7 @@ chroot $chrootBaseDir locale-gen
 chroot $chrootBaseDir apt-get update > /dev/null 2>&1
 echo -e $INFO A Debian $iSystem chroot environment  installed.
 echo -e $INFO Now deploying services start script...
-wget -q -O $chrootBaseDir/chroot_$chrootDir.sh $projectURL/wedro_chroot.sh
+$WGET $chrootBaseDir/chroot_$chrootDir.sh $projectURL/wedro_chroot.sh
 eval sed -i 's,__CHROOT_DIR_PLACEHOLDER__,$chrootBaseDir,g' $chrootBaseDir/chroot_$chrootDir.sh
 chmod +x $chrootBaseDir/chroot_$chrootDir.sh
 touch $chrootBaseDir/chroot-services.list
@@ -103,7 +104,7 @@ then
 	echo -e $INFO Torrents content will be downloaded to \"Public/Torrents\" share. Installing...
 	chroot $chrootBaseDir apt-get --force-yes -qqy install transmission-daemon
 	chroot $chrootBaseDir /etc/init.d/transmission-daemon stop > /dev/null 2>&1
-	wget -q -O $chrootBaseDir/etc/transmission-daemon/settings.json $projectURL/settings.json
+	$WGET $chrootBaseDir/etc/transmission-daemon/settings.json $projectURL/settings.json
 	chmod +rw $chrootBaseDir/etc/transmission-daemon/settings.json
 	echo transmission-daemon >> $chrootBaseDir/chroot-services.list
 	echo -e $INFO Transmission is installed.
