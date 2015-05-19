@@ -12,9 +12,9 @@ then
 else
 	chrootDir=$1
 fi
-iSystem=wheezy
+iSystem=jessie
 chrootBaseDir=/DataVolume/$chrootDir
-debootstrapPkgName=debootstrap_1.0.48+deb7u1_all.deb
+debootstrapPkgName=debootstrap_1.0.48+deb7u3_all.deb
 projectURL=https://github.com/MyBookLive/chroot/raw/master
 isServicesInstalled=no
 WGET="wget --no-check-certificate -q -O"
@@ -47,7 +47,7 @@ else
 	mkdir $chrootBaseDir
 fi
 echo -e $INFO Deploying a debootstrap package...
-$WGET /tmp/$debootstrapPkgName $projectURL/$debootstrapPkgName
+$WGET /tmp/$debootstrapPkgName ftp://ftp.debian.org/debian/pool/main/d/debootstrap/$debootstrapPkgName
 dpkg -i /tmp/$debootstrapPkgName > /dev/null 2>&1
 rm -f /tmp/$debootstrapPkgName
 echo -e $INFO Preparing a new Debian $iSystem chroot file base. Please, be patient,
