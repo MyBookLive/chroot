@@ -34,7 +34,7 @@ if [ -e /etc/init.d/chroot_$chrootDir.sh ]
 then
 	echo -e $ERROR Chroot\'ed services start/stop script detected! Please, remove
 	echo -e $ERROR previous installation or specify destination folder name
-	echo -e $ERROR and run script again with <foldername> parameter, for example:
+	echo -e $ERROR and run script again with folder name parameter, for example:
 	echo -e $ERROR ./install.sh my_debian
 	exit 1
 fi
