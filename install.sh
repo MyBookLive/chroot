@@ -48,7 +48,7 @@ else
 fi
 echo -e $INFO Deploying a debootstrap package...
 $WGET /tmp/$debootstrapPkgName ftp://ftp.debian.org/debian/pool/main/d/debootstrap/$debootstrapPkgName
-dpkg -i /tmp/$debootstrapPkgName > /dev/null 2>&1
+dpkg -i /tmp/$debootstrapPkgName
 rm -f /tmp/$debootstrapPkgName
 echo -e $INFO Preparing a new Debian $iSystem chroot file base. Please, be patient,
 echo -e $INFO may takes a long time on low speed connection...
