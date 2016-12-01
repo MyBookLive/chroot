@@ -14,7 +14,7 @@ else
 fi
 iSystem=jessie
 chrootBaseDir=/DataVolume/$chrootDir
-debootstrapPkgName=debootstrap_1.0.48+deb7u4_all.deb
+debootstrapPkgName=debootstrap_1.0.87_all.deb
 projectURL=https://github.com/MyBookLive/chroot/raw/master
 isServicesInstalled=no
 WGET="wget --no-check-certificate -q -O"
