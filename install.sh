@@ -52,7 +52,7 @@ dpkg -i /tmp/$debootstrapPkgName
 rm -f /tmp/$debootstrapPkgName
 echo -e $INFO Preparing a new Debian $iSystem chroot file base. Please, be patient,
 echo -e $INFO may takes a long time on low speed connection...
-debootstrap --no-check-gpg --no-check-certificate --variant=minbase --exclude=yaboot,udev,dbus,systemd --include=locales,mc,aptitude,wget,dialog,apt-utils,sysvinit-core,sysvinit,sysvinit-utils $iSystem $chrootBaseDir http://archive.debian.org/debian-archive/debian/
+debootstrap --no-check-gpg --no-check-certificate --variant=minbase --exclude=yaboot,udev,dbus,systemd --include=locales,mc,aptitude,wget,dialog,apt-utils,sysvinit-core,sysvinit,sysvinit-utils $iSystem $chrootBaseDir http://archive.debian.org/debian/
 echo "share:x:1000:root,www-data,daapd" >> $chrootBaseDir/etc/group
 cat > $chrootBaseDir/usr/sbin/policy-rc.d <<EOF
 #!/bin/sh
